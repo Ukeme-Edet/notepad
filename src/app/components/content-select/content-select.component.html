@@ -1,2 +1,26 @@
-<button (click)="activateNotesMode()" [routerLink]="'notes'">Notes</button>
-<button (click)="activateTasksMode()" [routerLink]="'tasks'">Tasks</button>
+<div class="flex">
+  <div class="flex-1 flex flex-col items-center justify-center">
+    <fa-icon
+      [icon]="
+        appState.viewMode === 'notes'
+          ? faRectangleListSolid
+          : faRectangleListRegular
+      "
+    ></fa-icon>
+    <button class="flex-1" (click)="activateNotesMode()" [routerLink]="'notes'">
+      Notes
+    </button>
+  </div>
+  <div class="flex-1 flex flex-col items-center justify-center">
+    <fa-icon
+      [icon]="
+        appState.viewMode === 'notes'
+          ? faCircleCheckRegular
+          : faCircleCheckSolid
+      "
+    ></fa-icon>
+    <button class="flex-1" (click)="activateTasksMode()" [routerLink]="'tasks'">
+      Tasks
+    </button>
+  </div>
+</div>
