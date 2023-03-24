@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { Task } from 'src/app/interfaces/task.model';
 
 @Component({
@@ -8,4 +9,5 @@ import { Task } from 'src/app/interfaces/task.model';
 })
 export class TaskItemComponent {
   @Input() task!: Task;
+  faCircle = faCircle;
 }
