@@ -6,12 +6,10 @@ import { ContentDatabaseService } from 'src/app/services/content-database/conten
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TasksListComponent {
-
   tasks$ = this.contentDatabaseService.getTasks().pipe(map((data) => data));
 
   constructor(private contentDatabaseService: ContentDatabaseService) {}
-
 }

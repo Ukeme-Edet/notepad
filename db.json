@@ -5,8 +5,8 @@
     { "title": "Test 3", "content": "Testing the application 3" }
   ],
   "tasks": [
-    { "title": "Test 1 T", "agenda": "Testing the agenda 1" },
-    { "title": "Test 2 T", "agenda": "Testing the agenda 2" },
-    { "title": "Test 3 T", "agenda": "Testing the agenda 3" }
+    { "title": "Test 1 T" },
+    { "title": "Test 2 T" },
+    { "title": "Test 3 T" }
   ]
 }
