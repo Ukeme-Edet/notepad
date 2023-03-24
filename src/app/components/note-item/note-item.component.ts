@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Note } from 'src/app/interfaces/note.model';
 
 @Component({
   selector: 'app-note-item',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./note-item.component.css']
 })
 export class NoteItemComponent {
+
+  @Input() note!: Note;
 
 }

@@ -1,4 +1,4 @@
 export interface Task {
     title: string;
-    content: string;
+    agenda: string;
 }
