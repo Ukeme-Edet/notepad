@@ -1,1 +1,6 @@
-<app-note-item *ngFor="let note of notes$ | async" [note]="note"></app-note-item>
+<div class="container flex flex-col p-2">
+  <app-note-item
+    *ngFor="let note of notes$ | async"
+    [note]="note"
+  ></app-note-item>
+</div>
