@@ -13,7 +13,6 @@ import { ContentDatabaseService } from 'src/app/services/content-database/conten
   selector: 'app-content-view',
   templateUrl: './content-view.component.html',
   styleUrls: ['./content-view.component.css'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContentViewComponent {
   appState!: AppStateService;
