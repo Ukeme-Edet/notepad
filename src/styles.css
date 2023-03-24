@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Delicious Handrawn";
+  src: url("./assets/fonts/DeliciousHandrawn-Regular.ttf");
+}

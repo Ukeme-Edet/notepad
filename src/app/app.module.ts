@@ -22,15 +22,16 @@ import { TasksListComponent } from './components/tasks-list/tasks-list.component
     NoteItemComponent,
     TaskItemComponent,
     NotesListComponent,
-    TasksListComponent
+    TasksListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
