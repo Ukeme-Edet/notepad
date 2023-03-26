@@ -7,3 +7,18 @@
   font-family: "Delicious Handrawn";
   src: url("./assets/fonts/DeliciousHandrawn-Regular.ttf");
 }
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  height: 0;
+  width: 0;
+  animation: ripple 0.5s;
+}
+
+@keyframes ripple {
+  to {
+    width: 70vw;
+    height: 70vw;
+  }
+}

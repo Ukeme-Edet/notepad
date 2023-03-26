@@ -1,5 +1,8 @@
-<div class="container flex flex-col bg-white">
-  <app-header></app-header>
-  <router-outlet></router-outlet>
-  <app-content-select></app-content-select>
+<div class="flex flex-col bg-white h-screen">
+  <app-header class="p-2 w-full h-24"></app-header>
+  <div class="flex-1 overflow-y-auto">
+    <router-outlet></router-outlet>
+  </div>
+  <app-content-select class="bg-gray-100 min
+  -h-12 rounded-t-xl"></app-content-select>
 </div>

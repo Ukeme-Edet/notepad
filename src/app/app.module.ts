@@ -12,6 +12,7 @@ import { NoteItemComponent } from './components/note-item/note-item.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { NotesListComponent } from './components/notes-list/notes-list.component';
 import { TasksListComponent } from './components/tasks-list/tasks-list.component';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TasksListComponent } from './components/tasks-list/tasks-list.component
     TaskItemComponent,
     NotesListComponent,
     TasksListComponent,
+    AddButtonComponent,
   ],
   imports: [
     BrowserModule,

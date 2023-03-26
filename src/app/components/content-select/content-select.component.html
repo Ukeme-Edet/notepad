@@ -1,5 +1,12 @@
 <div class="flex">
-  <div class="flex-1 flex flex-col items-center justify-center">
+  <div
+    class="flex-1 flex flex-col items-center justify-center {{
+      appState.viewMode === 'notes' ? 'text-green-600' : 'text-gray-500'
+    }} overflow-hidden transition-all relative p-2"
+    #notesMode
+    (click)="activateNotesMode(notesMode)"
+    [routerLink]="'notes'"
+  >
     <fa-icon
       [icon]="
         appState.viewMode === 'notes'
@@ -7,11 +14,16 @@
           : faRectangleListRegular
       "
     ></fa-icon>
-    <button class="flex-1" (click)="activateNotesMode()" [routerLink]="'notes'">
-      Notes
-    </button>
+    Notes
   </div>
-  <div class="flex-1 flex flex-col items-center justify-center">
+  <div
+    class="flex-1 flex flex-col items-center justify-center {{
+      appState.viewMode !== 'notes' ? 'text-green-600' : 'text-gray-500'
+    }} overflow-hidden transition-all relative p-2"
+    #tasksMode
+    (click)="activateTasksMode(tasksMode)"
+    [routerLink]="'tasks'"
+  >
     <fa-icon
       [icon]="
         appState.viewMode === 'notes'
@@ -19,8 +31,6 @@
           : faCircleCheckSolid
       "
     ></fa-icon>
-    <button class="flex-1" (click)="activateTasksMode()" [routerLink]="'tasks'">
-      Tasks
-    </button>
+    Tasks
   </div>
 </div>

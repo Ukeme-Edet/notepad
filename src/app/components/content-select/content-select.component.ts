@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {
   faCircleCheck as faCircleCheckRegular,
   faRectangleList as faRectangleListRegular,
@@ -25,11 +25,22 @@ export class ContentSelectComponent {
     this.appState = appStateService;
   }
 
-  activateNotesMode() {
+  activateNotesMode(noteSelectElement: HTMLElement) {
     this.appStateService.toogleViewMode('notes');
+    this.rippleButton(noteSelectElement);
   }
 
-  activateTasksMode() {
+  activateTasksMode(taskSelectElement: HTMLElement) {
     this.appStateService.toogleViewMode('tasks');
+    this.rippleButton(taskSelectElement);
+  }
+
+  rippleButton(element: HTMLElement) {
+    let ripple = document.createElement('span');
+    ripple.classList.add('ripple');
+    element.appendChild(ripple);
+    setTimeout(() => {
+      ripple.remove();
+    }, 100000);
   }
 }

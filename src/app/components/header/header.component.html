@@ -1,20 +1,16 @@
-<div class="container p-2">
-  <h1 class="text-3xl">
-    {{ appState.viewMode[0].toUpperCase() + appState.viewMode.slice(1) }}
-  </h1>
-  <div class="search relative">
-    <fa-icon
-      [icon]="faSearch"
-      class="text-gray-400 absolute translate-y-1/4 left-2"
-    ></fa-icon>
-    <input
-      class="rounded-full bg-gray-200 text-gray-400 p-1 pl-8 w-full"
-      type="search"
-      name="content-search"
-      id="content-search"
-      placeholder="Search {{
-        appState.viewMode === 'notes' ? 'notes' : 'tasks'
-      }}"
-    />
-  </div>
+<h1 class="text-3xl py-2">
+  {{ appState.viewMode[0].toUpperCase() + appState.viewMode.slice(1) }}
+</h1>
+<div class="search relative">
+  <fa-icon
+    [icon]="faSearch"
+    class="text-gray-400 absolute translate-y-1/4 left-2"
+  ></fa-icon>
+  <input
+    class="rounded-full bg-gray-200 text-gray-400 p-1 pl-8 w-full"
+    type="search"
+    name="content-search"
+    id="content-search"
+    placeholder="Search {{ appState.viewMode === 'notes' ? 'notes' : 'tasks' }}"
+  />
 </div>
