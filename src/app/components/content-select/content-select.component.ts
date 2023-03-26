@@ -41,6 +41,6 @@ export class ContentSelectComponent {
     element.appendChild(ripple);
     setTimeout(() => {
       ripple.remove();
-    }, 100000);
+    }, 500);
   }
 }

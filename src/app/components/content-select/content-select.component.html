@@ -1,36 +1,35 @@
-<div class="flex">
-  <div
-    class="flex-1 flex flex-col items-center justify-center {{
-      appState.viewMode === 'notes' ? 'text-green-600' : 'text-gray-500'
-    }} overflow-hidden transition-all relative p-2"
-    #notesMode
-    (click)="activateNotesMode(notesMode)"
-    [routerLink]="'notes'"
-  >
-    <fa-icon
-      [icon]="
-        appState.viewMode === 'notes'
-          ? faRectangleListSolid
-          : faRectangleListRegular
-      "
-    ></fa-icon>
-    Notes
-  </div>
-  <div
-    class="flex-1 flex flex-col items-center justify-center {{
-      appState.viewMode !== 'notes' ? 'text-green-600' : 'text-gray-500'
-    }} overflow-hidden transition-all relative p-2"
-    #tasksMode
-    (click)="activateTasksMode(tasksMode)"
-    [routerLink]="'tasks'"
-  >
-    <fa-icon
-      [icon]="
-        appState.viewMode === 'notes'
-          ? faCircleCheckRegular
-          : faCircleCheckSolid
-      "
-    ></fa-icon>
-    Tasks
-  </div>
+<div
+  class="flex-1 flex flex-col items-center justify-center {{
+    appState.viewMode === 'notes' ? 'text-green-600' : 'text-gray-500'
+  }} overflow-hidden transition-all relative p-2"
+  #notesMode
+  (click)="activateNotesMode(notesMode)"
+  [routerLink]="'notes'"
+>
+  <fa-icon
+    [icon]="
+      appState.viewMode === 'notes'
+        ? faRectangleListSolid
+        : faRectangleListRegular
+    "
+  ></fa-icon>
+  Notes
 </div>
+<div
+  class="flex-1 flex flex-col items-center justify-center {{
+    appState.viewMode !== 'notes' ? 'text-green-600' : 'text-gray-500'
+  }} overflow-hidden transition-all relative p-2"
+  #tasksMode
+  (click)="activateTasksMode(tasksMode)"
+  [routerLink]="'tasks'"
+>
+  <fa-icon
+    [icon]="
+      appState.viewMode === 'notes' ? faCircleCheckRegular : faCircleCheckSolid
+    "
+  ></fa-icon>
+  Tasks
+</div>
+<app-add-button
+  class="absolute bottom-24 right-1/2 h-16 w-16 bg-green-600 rounded-full translate-x-1/2"
+></app-add-button>
