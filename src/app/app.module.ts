@@ -13,6 +13,9 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
 import { NotesListComponent } from './components/notes-list/notes-list.component';
 import { TasksListComponent } from './components/tasks-list/tasks-list.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
+import { NoteFormComponent } from './components/note-form/note-form.component';
+import { TaskFormComponent } from './components/task-form/task-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     NotesListComponent,
     TasksListComponent,
     AddButtonComponent,
+    NoteFormComponent,
+    TaskFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,8 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     FontAwesomeModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

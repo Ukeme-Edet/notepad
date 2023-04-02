@@ -1,4 +1,9 @@
 <div class="">
   <app-notes-list *ngIf="appState.viewMode === 'notes'"></app-notes-list>
   <app-tasks-list *ngIf="appState.viewMode === 'tasks'"></app-tasks-list>
+  <app-note-form
+    *ngIf="appState.noteFormOpen"
+    class="min-h-screen w-screen absolute top-0 bg-white z-10 flex flex-col p-4"
+  ></app-note-form>
+  <app-task-form *ngIf="appState.taskFormOpen"></app-task-form>
 </div>

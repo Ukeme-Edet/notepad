@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   faCircleCheck as faCircleCheckRegular,
   faRectangleList as faRectangleListRegular,
@@ -42,5 +42,15 @@ export class ContentSelectComponent {
     setTimeout(() => {
       ripple.remove();
     }, 500);
+  }
+
+  addClick() {
+    if (this.appState.viewMode === 'notes') {
+      // Open Note Add Form
+      this.appState.noteFormOpen = true;
+      return;
+    }
+    // Open Task Add Form
+    this.appState.taskFormOpen = true;
   }
 }
