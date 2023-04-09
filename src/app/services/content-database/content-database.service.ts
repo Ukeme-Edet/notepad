@@ -20,6 +20,10 @@ export class ContentDatabaseService {
   }
 
   addNote(note: Note) {
-    return this.http.post<Note[]>(`${this.apiUrl}/notes`, {id: note.id, title: note.title, content: note.content});
+    return this.http.post<Note>(`${this.apiUrl}/notes`, {id: note.id, title: note.title, content: note.content});
+  }
+
+  editNote(note: Note) {
+    return this.http.patch<Note>(`${this.apiUrl}/notes/${note.id}`, {id: note.id, title: note.title, content: note.content});
   }
 }

@@ -1,24 +1,19 @@
 {
   "notes": [
     {
-      "id": 0,
-      "title": "Test 2",
-      "content": "Testing the application 2"
-    },
-    {
-      "id": 1,
       "title": "Test 1",
-      "content": "Testing the application 1"
+      "content": "Testing the application 1",
+      "id": 0
     },
     {
-      "id": 2,
+      "title": "Test 2",
+      "content": "Testing the application 2",
+      "id": 1
+    },
+    {
       "title": "Test 3",
-      "content": "Testing the application 3"
-    },
-    {
-      "title": "Testing Add Note",
-      "content": "Adding a note.",
-      "id": 3
+      "content": "Testing the application 3",
+      "id": 2
     }
   ],
   "tasks": [
