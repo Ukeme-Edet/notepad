@@ -16,7 +16,6 @@ export class NoteFormComponent {
   noteForm = this.formBuilder.group({
     title: '',
     content: '',
-    formId: '',
   });
 
   constructor(
@@ -33,7 +32,7 @@ export class NoteFormComponent {
     if (
       (this.noteForm.controls.content.value !== '' ||
         this.noteForm.controls.title.value !== '') &&
-      !this.noteForm.controls.formId.value
+      !formIdE.value
     ) {
       console.log(
         this.contentDatabaseService
@@ -43,9 +42,9 @@ export class NoteFormComponent {
             formIdE.value = data.id + '';
           })
       );
-    } else if (this.noteForm.controls.formId.value) {
+    } else if (formIdE.value) {
       this.contentDatabaseService
-        .editNote(this.noteForm.value as Note)
+        .editNote({title: this.noteForm.value.title, content: this.noteForm.value.content, id: Number(formIdE.value)} as Note)
         .subscribe((data) => {
           console.log(data);
         });
