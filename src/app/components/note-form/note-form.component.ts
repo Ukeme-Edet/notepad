@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Note } from 'src/app/interfaces/note.model';
+import { AppStateService } from 'src/app/services/app-state/app-state.service';
 import { ContentDatabaseService } from 'src/app/services/content-database/content-database.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { ContentDatabaseService } from 'src/app/services/content-database/conten
 export class NoteFormComponent {
   faArrowLeft = faArrowLeft;
   faCheck = faCheck;
+  formUnfocused = false;
 
   noteForm = this.formBuilder.group({
     title: '',
@@ -20,7 +22,7 @@ export class NoteFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private contentDatabaseService: ContentDatabaseService
+    private contentDatabaseService: ContentDatabaseService, private appStateService: AppStateService
   ) {
     // Focus on the content field when the form is loaded
     setTimeout(() => {
@@ -42,6 +44,7 @@ export class NoteFormComponent {
             formIdE.value = data.id + '';
           })
       );
+      this.appStateService.noteFormOpen = false;
     } else if (formIdE.value) {
       this.contentDatabaseService
         .editNote({title: this.noteForm.value.title, content: this.noteForm.value.content, id: Number(formIdE.value)} as Note)
@@ -49,5 +52,14 @@ export class NoteFormComponent {
           console.log(data);
         });
     }
+  }
+
+  saveCurrentFormState(unfocusButton: HTMLElement): void {
+    unfocusButton.focus();
+    this.formUnfocused = true;
+  }
+
+  inputFocus(): void {
+    this.formUnfocused = false;
   }
 }

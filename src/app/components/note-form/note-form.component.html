@@ -4,7 +4,12 @@
       <fa-icon [icon]="faArrowLeft" class="text-xl"></fa-icon>
     </button>
     <p class="text-3xl w-full">Notes</p>
-    <div class="flex-1">
+    <div
+      *ngIf="!formUnfocused"
+      class="flex-1"
+      #unfocusFormBtn
+      (click)="saveCurrentFormState(unfocusFormBtn)"
+    >
       <fa-icon [icon]="faCheck" class="text-xl"></fa-icon>
     </div>
   </div>
@@ -16,6 +21,7 @@
     id="title"
     placeholder="Title"
     class="text-2xl pt-2 pb-4 focus-visible:outline-none w-full"
+    (click)="inputFocus()"
   />
   <input
     type="text"
@@ -24,6 +30,7 @@
     id="note-content"
     placeholder="Write something down..."
     class="focus-visible:outline-none w-full"
+    (click)="inputFocus()"
   />
   <input type="hidden" name="form-id" #formIdE />
 </form>
