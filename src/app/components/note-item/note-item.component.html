@@ -1,2 +1,11 @@
-<h1 class="text-black">{{ note.title }}</h1>
-<p class="text-gray-500">{{ note.content }}</p>
+<h1 class="text-black text-xl">{{ note.title }}</h1>
+<p class="{{ note.title ? 'text-gray-800 text-sm' : 'text-black text-xl' }}">
+  {{ note.content }}
+</p>
+<p class="text-xs text-gray-500">
+  {{ noteHours > 12 ? noteHours - 12 : noteHours }}:{{
+    noteMinutes.toString().padStart(2, "0")
+  }}
+  {{ noteHours < 12 ? "AM" : "PM" }},
+  {{ noteDateStr }}
+</p>

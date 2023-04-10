@@ -20,7 +20,7 @@ export class ContentDatabaseService {
   }
 
   addNote(note: Note) {
-    return this.http.post<Note>(`${this.apiUrl}/notes`, {id: note.id, title: note.title, content: note.content});
+    return this.http.post<Note>(`${this.apiUrl}/notes`, {id: note.id, title: note.title, content: note.content, saveTime: note.saveTime});
   }
 
   editNote(note: Note) {
