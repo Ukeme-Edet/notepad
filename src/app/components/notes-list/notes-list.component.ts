@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map, tap } from 'rxjs';
+import { Note } from 'src/app/interfaces/note.model';
+import { AppStateService } from 'src/app/services/app-state/app-state.service';
 import { ContentDatabaseService } from 'src/app/services/content-database/content-database.service';
 
 @Component({
@@ -9,12 +11,11 @@ import { ContentDatabaseService } from 'src/app/services/content-database/conten
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotesListComponent {
-  // notes$ = this.contentDatabaseService.getNotes().pipe(map((data) => data));
-  // Update Tthe list everytime a new note is added
-  notes$ = this.contentDatabaseService.getNotes().pipe(
-    map((data) => data),
-    tap((data) => console.log(data))
-  );
+  notes$ = this.contentDatabaseService.getNotes().pipe(map((data) => data));
 
-  constructor(private contentDatabaseService: ContentDatabaseService) {}
+  constructor(private contentDatabaseService: ContentDatabaseService, private appStateService: AppStateService) {}
+
+  onNoteClick(note: Note) {
+    this.appStateService.setActiveNoteId(note.id);
+  }
 }

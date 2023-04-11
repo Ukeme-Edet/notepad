@@ -18,10 +18,12 @@ export class NoteFormComponent implements OnInit {
   noteHours!: number;
   noteMinutes!: number;
   noteDateStr!: string;
+  noteId: number | null;
 
   noteForm = this.formBuilder.group({
     title: '',
     content: '',
+    id: NaN,
   });
 
   constructor(
@@ -33,6 +35,9 @@ export class NoteFormComponent implements OnInit {
     setTimeout(() => {
       document.getElementById('note-content')?.focus();
     }, 0);
+    this.noteId = this.appStateService.activeNoteId;
+    this.noteForm.controls.id.setValue(this.noteId);
+    this.noteId !== null ? this.loadNote() : null;
   }
 
   ngOnInit(): void {
@@ -46,7 +51,7 @@ export class NoteFormComponent implements OnInit {
     if (
       (this.noteForm.controls.content.value !== '' ||
         this.noteForm.controls.title.value !== '') &&
-      !formIdE.value
+      typeof this.noteForm.controls.id.value !== 'number'
     ) {
       console.log(
         this.contentDatabaseService
@@ -57,11 +62,10 @@ export class NoteFormComponent implements OnInit {
           } as Note)
           .subscribe((data) => {
             console.log(data);
-            formIdE.value = data.id + '';
+            this.noteForm.controls.id.setValue(data.id);
           })
       );
-      this.appStateService.noteFormOpen = false;
-    } else if (formIdE.value) {
+    } else if (this.noteForm.controls.id.value !== null) {
       this.contentDatabaseService
         .editNote({
           title: this.noteForm.value.title,
@@ -73,6 +77,8 @@ export class NoteFormComponent implements OnInit {
           console.log(data);
         });
     }
+    // this.appStateService.noteFormOpen = false;
+    this.appStateService.setActiveNoteId(null);
   }
 
   saveCurrentFormState(unfocusButton: HTMLElement): void {
@@ -82,5 +88,15 @@ export class NoteFormComponent implements OnInit {
 
   inputFocus(): void {
     this.formUnfocused = false;
+  }
+
+  loadNote(): void {
+    this.contentDatabaseService
+      .getNoteById(this.noteId !== null ? this.noteId : NaN)
+      .subscribe((data) => {
+        this.noteForm.controls.title.setValue(data.title);
+        this.noteForm.controls.content.setValue(data.content);
+        this.noteForm.controls.id.setValue(data.id);
+      });
   }
 }

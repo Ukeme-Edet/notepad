@@ -19,11 +19,24 @@ export class ContentDatabaseService {
     return this.http.get<Note[]>(`${this.apiUrl}/notes`);
   }
 
+  getNoteById(noteId: number) {
+    return this.http.get<Note>(`${this.apiUrl}/notes/${noteId}`);
+  }
+
   addNote(note: Note) {
-    return this.http.post<Note>(`${this.apiUrl}/notes`, {id: note.id, title: note.title, content: note.content, saveTime: note.saveTime});
+    return this.http.post<Note>(`${this.apiUrl}/notes`, {
+      id: note.id,
+      title: note.title,
+      content: note.content,
+      saveTime: note.saveTime,
+    });
   }
 
   editNote(note: Note) {
-    return this.http.patch<Note>(`${this.apiUrl}/notes/${note.id}`, {id: note.id, title: note.title, content: note.content});
+    return this.http.patch<Note>(`${this.apiUrl}/notes/${note.id}`, {
+      id: note.id,
+      title: note.title,
+      content: note.content,
+    });
   }
 }

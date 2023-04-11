@@ -3,5 +3,6 @@
     class="bg-gray-200 w-full p-2 rounded-lg min-h-[64px] mb-2 flex flex-col justify-center"
     *ngFor="let note of notes$ | async"
     [note]="note"
+    (click)="onNoteClick(note)"
   ></app-note-item>
 </div>
