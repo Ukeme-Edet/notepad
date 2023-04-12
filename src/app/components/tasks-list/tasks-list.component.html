@@ -2,6 +2,6 @@
   <app-task-item
     class="p-4 bg-gray-200 rounded-lg flex mb-2"
     *ngFor="let task of tasks$ | async"
-    [task]="task"
+    [task]="task" (click)="onTaskClick(task)"
   ></app-task-item>
 </div>
