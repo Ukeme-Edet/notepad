@@ -1,1 +1,23 @@
-<p>task-form works!</p>
+<div class="background absolute top-0 w-screen h-screen" (click)="closeForm()"></div>
+<form
+  class="z-20 absolute bottom-0 w-screen min-h-[100px] p-4 bg-white rounded-t-xl"
+  [formGroup]="taskForm" (ngSubmit)="saveForm()"
+>
+  <input
+    class="w-full p-2 min-h-[50px] focus-visible:outline-none bg-gray-300 rounded-lg"
+    type="text"
+    name="tesk-name"
+    id="task-name"
+    (input)="checkSaveState(saveButton)"
+    formControlName="title"
+  />
+  <input type="hidden" name="taskId" formControlName="id">
+  <button
+    type="submit"
+    class="float-right h-[30px] w-[50px] p-2 transition-all disabled:text-gray-400 text-green-300"
+    #saveButton
+    disabled
+  >
+    Save
+  </button>
+</form>

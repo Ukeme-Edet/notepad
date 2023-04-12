@@ -8,6 +8,7 @@ export class AppStateService {
   noteFormOpen!: boolean;
   taskFormOpen!: boolean;
   activeNoteId!: number | null;
+  activeTaskId!: number | null;
 
   constructor() {
     this.viewMode = 'notes';
@@ -22,5 +23,10 @@ export class AppStateService {
   setActiveNoteId(noteId: number | null): void {
     this.noteFormOpen = !this.noteFormOpen;
     this.activeNoteId = noteId;
+  }
+
+  setActiveTaskId(taskId: number | null): void {
+    this.taskFormOpen = !this.taskFormOpen;
+    this.activeTaskId = taskId;
   }
 }
