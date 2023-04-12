@@ -37,7 +37,7 @@ export class NoteFormComponent implements OnInit {
     }, 0);
     this.noteId = this.appStateService.activeNoteId;
     this.noteForm.controls.id.setValue(this.noteId);
-    this.noteId !== null ? this.loadNote() : null;
+    this.noteId !== null && this.noteId !== undefined ? this.loadNote() : null;
   }
 
   ngOnInit(): void {
