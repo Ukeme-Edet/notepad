@@ -9,6 +9,7 @@ export class AppStateService {
   taskFormOpen!: boolean;
   activeNoteId!: number | null;
   activeTaskId!: number | null;
+  searchMode!: boolean;
 
   constructor() {
     this.viewMode = 'notes';
