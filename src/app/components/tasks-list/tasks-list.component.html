@@ -1,7 +1,6 @@
-<div class=" p-2 flex flex-col">
+<div class="p-2 flex flex-col">
   <app-task-item
-    class="p-4 bg-gray-200 rounded-lg flex mb-2"
     *ngFor="let task of tasks$ | async"
-    [task]="task" (click)="onTaskClick(task)"
+    [task]="task"
   ></app-task-item>
 </div>

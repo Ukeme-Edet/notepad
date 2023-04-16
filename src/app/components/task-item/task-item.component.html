@@ -1,2 +1,7 @@
-<fa-icon [icon]="faCircle"></fa-icon>
-<h1 class="ml-2">{{ task.title }}</h1>
+<div (click)="onTaskClick(task)" class="p-4 bg-gray-200 rounded-lg flex mb-2">
+  <fa-icon
+    [icon]="taskDone ? faCircleCheck : faCircle"
+    (click)="toggleTaskDone($event)"
+  ></fa-icon>
+  <h1 class="ml-2">{{ task.title }}</h1>
+</div>

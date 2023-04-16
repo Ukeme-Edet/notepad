@@ -13,9 +13,8 @@ import { ContentDatabaseService } from 'src/app/services/content-database/conten
 export class TasksListComponent {
   tasks$ = this.contentDatabaseService.getTasks().pipe(map((data) => data));
 
-  constructor(private contentDatabaseService: ContentDatabaseService, private appStateService: AppStateService) {}
-
-  onTaskClick(task: Task) {
-    this.appStateService.setActiveTaskId(task.id);
-  }
+  constructor(
+    private contentDatabaseService: ContentDatabaseService,
+    private appStateService: AppStateService
+  ) {}
 }
