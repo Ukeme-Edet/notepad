@@ -17,5 +17,6 @@ export class NotesListComponent {
 
   onNoteClick(note: Note) {
     this.appStateService.setActiveNoteId(note.id);
+    
   }
 }
