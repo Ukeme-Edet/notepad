@@ -1,16 +1,32 @@
-<h1 class="text-3xl py-2">
+<h1 *ngIf="!appState.searchMode" class="text-3xl py-2">
   {{ appState.viewMode[0].toUpperCase() + appState.viewMode.slice(1) }}
 </h1>
-<div class="search relative">
-  <fa-icon
-    [icon]="faSearch"
-    class="text-gray-400 absolute translate-y-0.5 left-2"
-  ></fa-icon>
-  <input
-    class="rounded-full bg-gray-200 text-gray-400 p-1 pl-8 w-full"
-    type="search"
-    name="content-search"
-    id="content-search"
-    placeholder="Search {{ appState.viewMode === 'notes' ? 'notes' : 'tasks' }}"
-  />
+<div class="lower-header">
+  <div
+    *ngIf="appState.searchMode"
+    class="back-arrow inline-block w-1/12 text-center"
+    (click)="closeSearch()"
+  >
+    <fa-icon class="m-auto align-middle fa-lg" [icon]="faArrowLeft"></fa-icon>
+  </div>
+  <div
+    class="search relative   {{
+      appState.searchMode ? 'w-11/12 float-right' : 'w-full'
+    }}"
+  >
+    <fa-icon
+      [icon]="faSearch"
+      class="text-gray-400 absolute translate-y-0.5 left-2"
+    ></fa-icon>
+    <input
+      class="rounded-full bg-gray-200 text-gray-400 p-1 pl-8 w-full"
+      type="search"
+      name="content-search"
+      id="content-search"
+      placeholder="Search {{
+        appState.viewMode === 'notes' ? 'notes' : 'tasks'
+      }}"
+      (focus)="toggleSearch()"
+    />
+  </div>
 </div>

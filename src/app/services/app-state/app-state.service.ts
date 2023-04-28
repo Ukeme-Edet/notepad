@@ -30,4 +30,8 @@ export class AppStateService {
     this.taskFormOpen = !this.taskFormOpen;
     this.activeTaskId = taskId;
   }
+
+  toggleSearchMode(): void {
+    this.searchMode = !this.searchMode;
+  }
 }
