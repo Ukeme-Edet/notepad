@@ -13,10 +13,12 @@ import { ContentDatabaseService } from 'src/app/services/content-database/conten
 export class NotesListComponent {
   notes$ = this.contentDatabaseService.getNotes().pipe(map((data) => data));
 
-  constructor(private contentDatabaseService: ContentDatabaseService, private appStateService: AppStateService) {}
+  constructor(
+    private contentDatabaseService: ContentDatabaseService,
+    private appStateService: AppStateService
+  ) {}
 
   onNoteClick(note: Note) {
     this.appStateService.setActiveNoteId(note.id);
-    
   }
 }
