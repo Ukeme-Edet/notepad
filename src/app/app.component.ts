@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppStateService } from './services/app-state/app-state.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'notepad';
+  appState!: AppStateService;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private appStateService: AppStateService
+  ) {
+    this.appState = appStateService;
+  }
 
   ngOnInit(): void {
     this.router.navigate(['/notes']);
