@@ -1,6 +1,7 @@
 # Notepad
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/26fd731f-de01-4ad6-a8f9-e910a7bf0f38/deploy-status)](https://app.netlify.com/sites/star-notepad/deploys)
 
 ## Development server
 
