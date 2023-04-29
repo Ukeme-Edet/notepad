@@ -51,4 +51,8 @@ export class ContentDatabaseService {
   editTask(task: Task) {
     return this.http.patch<Task>(`${this.apiUrl}/tasks/${task.id}`, task);
   }
+
+  searchNotes(searchTerms: string) {
+    return this.http.get<Note[]>(`${this.apiUrl}/notes?q=${searchTerms}`);
+  }
 }

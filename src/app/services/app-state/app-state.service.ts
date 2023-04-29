@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,12 @@ export class AppStateService {
   activeNoteId!: number | null;
   activeTaskId!: number | null;
   searchMode!: boolean;
-  searchTerms!: string;
+
+  searchTerms = new BehaviorSubject<string>('');
+
+  setSearchTerms(searchQuery: string) {
+    this.searchTerms.next(searchQuery);
+  }
 
   constructor() {
     this.viewMode = 'notes';

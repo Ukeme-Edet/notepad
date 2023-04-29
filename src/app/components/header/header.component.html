@@ -5,7 +5,7 @@
   <div
     *ngIf="appState.searchMode"
     class="back-arrow inline-block w-1/12 text-center"
-    (click)="closeSearch()"
+    (click)="closeSearch(searchInput)"
   >
     <fa-icon class="m-auto align-middle fa-lg" [icon]="faArrowLeft"></fa-icon>
   </div>

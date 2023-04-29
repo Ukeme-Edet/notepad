@@ -19,11 +19,13 @@ export class HeaderComponent {
   toggleSearch(searchInput: HTMLInputElement): void {
     this.appState.searchMode ? null : this.appState.toggleSearchMode();
     searchInput.addEventListener('input', () => {
-      this.appState.searchTerms = searchInput.value;
+      this.appState.setSearchTerms(searchInput.value);
     });
   }
 
-  closeSearch(): void {
+  closeSearch(searchInput: HTMLInputElement): void {
     this.appState.toggleSearchMode();
+    searchInput.value = '';
+    this.appState.setSearchTerms("");
   }
 }
