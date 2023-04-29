@@ -52,6 +52,14 @@ export class ContentDatabaseService {
     return this.http.patch<Task>(`${this.apiUrl}/tasks/${task.id}`, task);
   }
 
+  deleteNote(noteId: number) {
+    return this.http.delete<Note>(`${this.apiUrl}/notes/${noteId}`);
+  }
+
+  deleteTask(taskId: number) {
+    return this.http.delete<Task>(`${this.apiUrl}/tasks/${taskId}`);
+  }
+
   searchNotes(searchTerms: string) {
     return this.http.get<Note[]>(`${this.apiUrl}/notes?q=${searchTerms}`);
   }

@@ -12,6 +12,9 @@
     >
       <fa-icon [icon]="faCheck" class="text-xl"></fa-icon>
     </div>
+    <div *ngIf="formUnfocused" class="flex-1" (click)="deleteNote()">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </div>
   </div>
   <p class="text-xs text-gray-400 py-2">
     {{ noteHours > 12 ? noteHours - 12 : noteHours }}:{{

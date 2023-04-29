@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faCheck,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { Note } from 'src/app/interfaces/note.model';
 import { AppStateService } from 'src/app/services/app-state/app-state.service';
 import { ContentDatabaseService } from 'src/app/services/content-database/content-database.service';
@@ -13,7 +17,8 @@ import { ContentDatabaseService } from 'src/app/services/content-database/conten
 export class NoteFormComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faCheck = faCheck;
-  formUnfocused = false;
+  faTrash = faTrash;
+  formUnfocused = true;
   noteOpenTime!: Date;
   noteHours!: number;
   noteMinutes!: number;
@@ -31,13 +36,14 @@ export class NoteFormComponent implements OnInit {
     private contentDatabaseService: ContentDatabaseService,
     private appStateService: AppStateService
   ) {
-    // Focus on the content field when the form is loaded
-    setTimeout(() => {
-      document.getElementById('note-content')?.focus();
-    }, 0);
     this.noteId = this.appStateService.activeNoteId;
     this.noteForm.controls.id.setValue(this.noteId);
-    this.noteId !== null && this.noteId !== undefined ? this.loadNote() : null;
+    this.noteId !== null && this.noteId !== undefined
+      ? this.loadNote() // Focus on the content field when the form is loaded
+      : setTimeout(() => {
+          document.getElementById('note-content')?.focus();
+          this.formUnfocused = false;
+        }, 0);
   }
 
   ngOnInit(): void {
@@ -82,6 +88,15 @@ export class NoteFormComponent implements OnInit {
   saveCurrentFormState(unfocusButton: HTMLElement): void {
     unfocusButton.focus();
     this.formUnfocused = true;
+  }
+
+  deleteNote(): void {
+    this.contentDatabaseService
+      .deleteNote(this.noteForm.value.id as number)
+      .subscribe((data) => {
+        data;
+      });
+    this.appStateService.setActiveNoteId(null);
   }
 
   inputFocus(): void {
