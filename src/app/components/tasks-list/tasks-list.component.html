@@ -2,5 +2,6 @@
   <app-task-item
     *ngFor="let task of tasks$ | async"
     [task]="task"
+    (click)="onTaskClick(task)"
   ></app-task-item>
 </div>

@@ -55,4 +55,8 @@ export class ContentDatabaseService {
   searchNotes(searchTerms: string) {
     return this.http.get<Note[]>(`${this.apiUrl}/notes?q=${searchTerms}`);
   }
+
+  searchTasks(searchTerms: string) {
+    return this.http.get<Task[]>(`${this.apiUrl}/tasks?q=${searchTerms}`);
+  }
 }

@@ -37,8 +37,4 @@ export class TaskItemComponent implements OnInit {
       } as Task)
       .subscribe((task) => console.log(task));
   }
-
-  onTaskClick(task: Task) {
-    this.appStateService.setActiveTaskId(task.id);
-  }
 }
