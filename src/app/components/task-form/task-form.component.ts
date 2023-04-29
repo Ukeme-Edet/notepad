@@ -39,13 +39,13 @@ export class TaskFormComponent {
       this.contentDbService
         .addTask(this.taskForm.value as Task)
         .subscribe((data) => {
-          console.log(data);
+          data;
         });
     } else if (this.taskForm.controls.id.value !== null) {
       this.contentDbService
         .editTask(this.taskForm.value as Task)
         .subscribe((data) => {
-          console.log(data);
+          data;
         });
     }
     this.closeForm();

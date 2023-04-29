@@ -28,7 +28,7 @@ export class TasksListComponent {
           return this.contentDatabaseService.searchTasks(searchQuery);
         }
       }),
-      tap((notes) => console.log(notes)) // log the filtered notes in the console
+      tap((tasks) => tasks) // log the filtered notes in the console
     );
   }
 

@@ -53,18 +53,16 @@ export class NoteFormComponent implements OnInit {
         this.noteForm.controls.title.value !== '') &&
       typeof this.noteForm.controls.id.value !== 'number'
     ) {
-      console.log(
-        this.contentDatabaseService
-          .addNote({
-            title: this.noteForm.value.title,
-            content: this.noteForm.value.content,
-            saveTime: Date.now(),
-          } as Note)
-          .subscribe((data) => {
-            console.log(data);
-            this.noteForm.controls.id.setValue(data.id);
-          })
-      );
+      this.contentDatabaseService
+        .addNote({
+          title: this.noteForm.value.title,
+          content: this.noteForm.value.content,
+          saveTime: Date.now(),
+        } as Note)
+        .subscribe((data) => {
+          data;
+          this.noteForm.controls.id.setValue(data.id);
+        });
     } else if (this.noteForm.controls.id.value !== null) {
       this.contentDatabaseService
         .editNote({
@@ -74,7 +72,7 @@ export class NoteFormComponent implements OnInit {
           saveTime: Date.now(),
         } as Note)
         .subscribe((data) => {
-          console.log(data);
+          data;
         });
     }
     // this.appStateService.noteFormOpen = false;

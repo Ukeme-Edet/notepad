@@ -28,7 +28,7 @@ export class NotesListComponent {
           return this.contentDatabaseService.searchNotes(searchQuery);
         }
       }),
-      tap((notes) => console.log(notes)) // log the filtered notes in the console
+      tap((notes) => notes) // log the filtered notes in the console
     );
   }
 

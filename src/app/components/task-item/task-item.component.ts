@@ -35,6 +35,6 @@ export class TaskItemComponent implements OnInit {
         title: this.task.title,
         done: this.taskDone,
       } as Task)
-      .subscribe((task) => console.log(task));
+      .subscribe((task) => task);
   }
 }
