@@ -28,12 +28,7 @@ export class ContentDatabaseService {
   }
 
   addNote(note: Note) {
-    return this.http.post<Note>(`${this.apiUrl}/notes`, {
-      id: note.id,
-      title: note.title,
-      content: note.content,
-      saveTime: note.saveTime,
-    });
+    return this.http.post<Note>(`${this.apiUrl}/notes`, note);
   }
 
   addTask(task: Task) {
@@ -41,11 +36,7 @@ export class ContentDatabaseService {
   }
 
   editNote(note: Note) {
-    return this.http.patch<Note>(`${this.apiUrl}/notes/${note.id}`, {
-      id: note.id,
-      title: note.title,
-      content: note.content,
-    });
+    return this.http.patch<Note>(`${this.apiUrl}/notes/${note.id}`, note);
   }
 
   editTask(task: Task) {
