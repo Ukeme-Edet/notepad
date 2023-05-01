@@ -12,6 +12,7 @@ export class AppStateService {
   activeTaskId!: number | null;
   searchMode!: boolean;
 
+  
   searchTerms = new BehaviorSubject<string>('');
 
   setSearchTerms(searchQuery: string) {
