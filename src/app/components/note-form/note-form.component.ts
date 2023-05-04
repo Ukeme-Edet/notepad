@@ -8,6 +8,7 @@ import {
 import { Note } from 'src/app/interfaces/note.model';
 import { AppStateService } from 'src/app/services/app-state/app-state.service';
 import { ContentDatabaseService } from 'src/app/services/content-database/content-database.service';
+import { WatchService } from 'src/app/services/watch/watch.service';
 
 @Component({
   selector: 'app-note-form',
@@ -34,7 +35,8 @@ export class NoteFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private contentDatabaseService: ContentDatabaseService,
-    private appStateService: AppStateService
+    private appStateService: AppStateService,
+    private watchService: WatchService
   ) {
     this.noteId = this.appStateService.activeNoteId;
     this.noteForm.controls.id.setValue(this.noteId);
@@ -59,16 +61,18 @@ export class NoteFormComponent implements OnInit {
         this.noteForm.controls.title.value !== '') &&
       typeof this.noteForm.controls.id.value !== 'number'
     ) {
-      this.contentDatabaseService
-        .addNote({
-          title: this.noteForm.value.title,
-          content: this.noteForm.value.content,
-          saveTime: Date.now(),
-        } as Note)
-        .subscribe((data) => {
-          data;
-          this.noteForm.controls.id.setValue(data.id);
-        });
+      const note: Note = {
+        title: this.noteForm.value.title || '',
+        content: this.noteForm.value.content || '',
+        saveTime: Date.now(),
+        id: NaN,
+      };
+      this.contentDatabaseService.addNote(note)
+      .subscribe((data) => {
+        data;
+        this.noteForm.controls.id.setValue(data.id);
+        this.watchService.refreshNotes(note);
+      });
     } else if (this.noteForm.controls.id.value !== null) {
       this.contentDatabaseService
         .editNote({
